@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>ToolsKit</title></head>
+<body>
+<script>
+(function () {
+  var path = location.pathname + location.search + location.hash;
+  sessionStorage.setItem('toolnest-redirect', path);
+  location.replace('/ToolNest/');
+}());
+</script>
+</body>
+</html>

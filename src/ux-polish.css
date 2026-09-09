@@ -1,0 +1,25 @@
+/* ToolsKit UX polish — interaction, focus, density and mobile resilience */
+:root{--tk-ring:rgba(99,102,241,.24);--tk-shadow-soft:0 10px 30px rgba(15,23,42,.06);--tk-shadow-lift:0 18px 44px rgba(79,70,229,.12)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,a,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+input::placeholder,textarea::placeholder{color:#94a3b8;opacity:1}
+textarea{resize:vertical;min-height:140px}
+button,a,.category-tile,.menu-tool,.popular-card{touch-action:manipulation}
+.category-tile,.menu-tool,.popular-card,.tool-panel,.result,.file-drop{contain:layout paint}
+.category-tile:active,.menu-tool:active,.popular-card:active,.primary:active,.secondary:active,.hero-cta:active{transform:translateY(0) scale(.985)!important}
+.primary,.hero-cta{min-height:44px}
+.secondary{min-height:42px}
+.result{overflow:hidden}
+.result pre,.result code{max-width:100%;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.file-drop{transition:border-color .2s,background .2s,box-shadow .2s,transform .2s}
+.file-drop:focus-within{border-color:#818cf8!important;box-shadow:0 0 0 4px var(--tk-ring),var(--tk-shadow-soft)!important}
+.header-search input{min-width:0}
+.header-search svg{flex:0 0 auto}
+.main-nav a{white-space:nowrap}
+@media(max-width:900px){.topbar{gap:12px}.main-nav{overflow-x:auto;scrollbar-width:none}.main-nav::-webkit-scrollbar{display:none}.header-search{min-width:180px}.category-row{overflow:visible}.tool-menu-panel{overflow:hidden}}
+@media(max-width:620px){.topbar{position:sticky;top:0;z-index:50}.main-nav{display:none}.header-search{flex:1;min-width:0;width:100%}.hero{min-height:auto!important}.hero-cta,.hero-secondary{width:100%;justify-content:center}.hero-proof{flex-wrap:wrap;gap:8px}.category-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}.category-tile{padding:12px!important}.tool-menu-panel{border-radius:20px!important}.menu-tool{min-width:0}.editor,.diff-grid textarea{min-height:190px!important}.controls{grid-template-columns:1fr!important}.controls>*{min-width:0}.file-drop{min-height:150px}.result{max-width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.category-tile,.menu-tool,.popular-card,.primary,.secondary,.hero-cta,.hero-secondary,.header-search,.file-drop{transition:none!important}}
+@media(prefers-contrast:more){button,a{ text-decoration-thickness:2px }.editor,.diff-grid textarea,.controls input,.controls select,.inline-control input{border-width:2px!important}}
