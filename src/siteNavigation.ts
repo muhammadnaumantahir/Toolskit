@@ -2,6 +2,12 @@ export type SiteNavigationItem={label:string;path:string}
 export const siteNavigation:SiteNavigationItem[]=[
  {label:'Home',path:'/'},
  {label:'Tools / Categories',path:'/tools'},
+ {label:'Developer Tools',path:'/developer-tools'},
+ {label:'Text Tools',path:'/text-tools'},
+ {label:'PDF Tools',path:'/pdf-tools'},
+ {label:'Image Tools',path:'/image-tools'},
+ {label:'Calculator Tools',path:'/calculator-tools'},
+ {label:'Security Tools',path:'/security-tools'},
  {label:'About Us',path:'/about'},
  {label:'Contact Us',path:'/contact'},
  {label:'Privacy Policy',path:'/privacy-policy'},
@@ -12,6 +18,36 @@ type SiteSection={heading:string;body:string[]}
 export type SitePage={path:string;title:string;description:string;sections:SiteSection[]}
 
 export const sitePages:SitePage[]=[
+ {path:'/developer-tools',title:'Developer Tools | ToolsKit',description:'Free online developer tools for JSON, Base64, URLs, JWTs, regex, SQL, HTML, CSS, JavaScript, XML, Markdown, cron and UUIDs.',sections:[
+  {heading:'Fast developer utilities in your browser',body:['ToolsKit brings common developer utilities into one focused workspace. Format JSON, validate data, encode URLs, inspect JWT payloads, test regular expressions, format markup, and handle everyday developer text without installing a desktop utility.','Core browser workflows are designed to be fast and convenient for development, debugging, testing, and small data transformations.']},
+  {heading:'JSON, encoding and debugging tools',body:['Use the JSON formatter, validator, minifier, JSON to CSV, and JSON to YAML tools for common API and data tasks. Base64 and URL encoder/decoder tools help with everyday encoding work, while the JWT decoder can inspect token headers and payloads locally.']},
+  {heading:'Code formatting and utility tools',body:['ToolsKit also includes SQL, HTML, CSS, JavaScript, XML, Markdown, regex, cron, and UUID utilities. Explore the full developer collection from the Tools / Categories page and choose the tool that matches your task.']}
+ ]},
+ {path:'/text-tools',title:'Text Tools | ToolsKit',description:'Free online text tools for counting, cleaning, sorting, comparing, reversing and converting text.',sections:[
+  {heading:'Everyday text tools',body:['ToolsKit text utilities are designed for writers, students, developers, editors, researchers, and anyone who needs to clean or transform text quickly.']},
+  {heading:'Count, clean and transform',body:['Count words, characters, sentences and lines; remove duplicate lines and extra spaces; sort or reverse text; remove line breaks; and convert between common writing and programming case styles.']},
+  {heading:'Compare text with less friction',body:['The text diff tool makes it easier to inspect changes between two pieces of text. Use these utilities for editing, content cleanup, data preparation, code snippets, and other small text tasks.']}
+ ]},
+ {path:'/pdf-tools',title:'PDF Tools | ToolsKit',description:'Free browser-based PDF tools to merge, split, compress, rotate, extract, delete, reorder and convert PDF pages.',sections:[
+  {heading:'Work with PDFs locally',body:['ToolsKit provides practical PDF utilities for common document tasks. Where supported, files are processed in the browser so you can work without sending the document to a separate processing service.']},
+  {heading:'Merge, split and organize pages',body:['Merge PDF files, split or extract selected pages, delete pages, reorder page sequences, rotate documents, and create smaller PDFs with the available compression workflow.']},
+  {heading:'Convert between PDFs and images',body:['Convert PDF pages to JPG images and combine JPG, PNG, and WebP images into a PDF. These tools are useful for quick document preparation, sharing, and image-to-document workflows.']}
+ ]},
+ {path:'/image-tools',title:'Image Tools | ToolsKit',description:'Free online image tools for compression, resizing, cropping, conversion and basic image metadata inspection.',sections:[
+  {heading:'Simple image processing',body:['ToolsKit image utilities help with common image preparation tasks without requiring a desktop editor. Choose an image, adjust the available settings, and process it in your browser.']},
+  {heading:'Compress, resize and crop',body:['Reduce image file size with adjustable quality, resize images while preserving proportions, or crop using straightforward dimensions. These tools are useful for websites, documents, social posts, and everyday file sharing.']},
+  {heading:'Convert common formats',body:['Convert between JPG, PNG, and WebP formats and inspect basic image dimensions and metadata. The goal is a quick utility workflow rather than a complicated editing suite.']}
+ ]},
+ {path:'/calculator-tools',title:'Online Calculators | ToolsKit',description:'Free online calculators for percentages, discounts, age, dates, time, loans, EMI, compound interest, tax and unit conversion.',sections:[
+  {heading:'Quick calculations without spreadsheets',body:['ToolsKit calculators are built for small everyday questions where opening a spreadsheet is unnecessary. Enter the values, run the calculation, and review a clear result.']},
+  {heading:'Money, percentage and date calculations',body:['Calculate percentages, discounts, loan and EMI payments, compound interest, taxes, age, date differences, and time totals. Results are intended as convenient estimates and should be independently checked for important decisions.']},
+  {heading:'Convert common units',body:['The unit converter supports common length, weight, temperature, and volume conversions. Use it for quick reference while working, studying, shopping, cooking, traveling, or preparing content.']}
+ ]},
+ {path:'/security-tools',title:'Security Tools | ToolsKit',description:'Free browser-based security utilities for password generation, hashing, HTML encoding and decoding, UUIDs and related tasks.',sections:[
+  {heading:'Practical security helpers',body:['ToolsKit includes lightweight browser utilities for common encoding, hashing, password-generation, and identifier tasks. They are intended as convenient helpers rather than a replacement for a full security platform.']},
+  {heading:'Generate and hash locally',body:['Generate strong random passwords and UUID v4 values, or create SHA-256, SHA-512, and MD5 digests from text. Browser-based processing helps keep these simple inputs close to your device.']},
+  {heading:'Encode and decode safely',body:['HTML encoder and decoder tools help transform common HTML entities, while other developer utilities provide Base64 and URL encoding. Always verify security-sensitive results and never expose secrets unnecessarily.']}
+ ]},
  {path:'/about',title:'About Us | ToolsKit',description:'Learn what ToolsKit is, why it exists, and how we design practical browser tools around clarity, speed, and useful everyday work.',sections:[
   {heading:'A toolkit built for real work',body:['ToolsKit is a focused collection of practical web utilities for writing, development, documents, images, calculations, and everyday security tasks. The goal is simple: make small jobs easier without forcing people through unnecessary accounts or complicated workflows.','We organize the experience around clear categories and dedicated tool workspaces so you can understand what a tool does before you use it and move quickly from discovery to result.']},
   {heading:'Our product principles',body:['Useful before flashy. Every tool should solve a recognizable problem and communicate its purpose clearly.','Fast and focused. Core browser-based tools are designed to keep processing close to the user wherever the task allows it.','Clear by design. Navigation, labels, actions, feedback, and supporting information should remain understandable on desktop and mobile.']},
