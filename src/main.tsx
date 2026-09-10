@@ -14,7 +14,7 @@ import './tool-workspace.css'
 import './page-mode.css'
 import './typography-consistency.css'
 import './spacing-consistency.css'
-import './dark-theme.css'
+import './light-theme.css'
 
 const path=window.location.pathname.replace(/\/$/,'')||'/'
 const syncPageMode=()=>{
