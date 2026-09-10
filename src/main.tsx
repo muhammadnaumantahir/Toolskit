@@ -31,6 +31,6 @@ const isHome=path==='/'
 const isTool=path.startsWith('/tools/')
 const infoPage=getSitePage(path)
 const page=path==='/tools'?<ToolsLanding/>:infoPage?<SitePage page={infoPage}/>:<App/>
-const content=isTool?<><SeoContent/>{page}</>:page
+const content=isTool?<>{page}<SeoContent/></>:page
 const root=ReactDOM.createRoot(document.getElementById('root')!)
 root.render(<React.StrictMode>{isHome||isTool?content:<SiteChrome>{content}</SiteChrome>}</React.StrictMode>)
