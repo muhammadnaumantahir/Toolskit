@@ -113,9 +113,13 @@ The application is designed as a static-friendly web project, making it suitable
 
 ### Install dependencies
 
+For a clean checkout using the committed lockfile:
+
 ```bash
-npm install
+npm ci
 ```
+
+Use `npm install` when intentionally adding or updating dependencies.
 
 ### Start the development server
 
@@ -180,7 +184,7 @@ npm run typecheck
 npm run build
 ```
 
-GitHub Actions also provides automated test, typecheck, and production-build checks for the configured branch workflow.
+GitHub Actions also provides automated test, typecheck, and production-build checks for the configured `master` branch workflow.
 
 ## 🗺️ Roadmap
 
