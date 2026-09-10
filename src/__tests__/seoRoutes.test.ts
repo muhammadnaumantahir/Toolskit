@@ -1,6 +1,7 @@
 import {describe,expect,it} from 'vitest'
 import {tools} from '../toolRegistry'
 import {validatePageNumbers,pdfImageStrategy} from '../pdfTools'
+import {normalizePath} from '../seo'
 
 const base='https://toolskit.sbs'
 const infoRoutes=['/','/tools','/about','/contact','/privacy-policy','/terms-and-conditions']
@@ -33,6 +34,11 @@ describe('SEO route coverage',()=>{
       'https://toolskit.sbs/tools/word-counter',
       'https://toolskit.sbs/privacy-policy'
     ])
+  })
+
+  it('normalizes only URL slashes and does not contain legacy ToolNest migration behavior',()=>{
+    expect(normalizePath('/tools/word-counter/')).toBe('/tools/word-counter')
+    expect(normalizePath('/ToolNest/tools/word-counter')).toBe('/ToolNest/tools/word-counter')
   })
 })
 
