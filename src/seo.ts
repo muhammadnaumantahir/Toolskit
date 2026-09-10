@@ -20,7 +20,7 @@ const seoBySlug:Record<string,SeoData>={
  'merge-pdf':{title:'Merge PDF — Combine PDF Files Online | ToolsKit',description:'Merge multiple PDF files into one PDF directly in your browser. Fast and private.'},
  'split-pdf':{title:'Split PDF — Extract PDF Pages Online | ToolsKit',description:'Split a PDF and extract selected pages directly in your browser with no required upload.'},
  'compress-pdf':{title:'Compress PDF — Reduce PDF Size Online | ToolsKit',description:'Compress PDF files in your browser with adjustable quality. Fast local PDF compression.'},
- 'pdf-to-jpg':{title:'PDF to JPG — Convert PDF Pages to Images | ToolsKit',description:'Convert PDF pages to JPG images directly in your browser. Fast and private PDF conversion.'},
+ 'pdf-to-jpg':{title:'PDF to JPG — Convert PDF Pages to Images | ToolsKit',description:'Convert PDF pages to JPG images directly in your browser. Fast and private.'},
  'jpg-to-pdf':{title:'JPG to PDF — Convert Images to PDF Online | ToolsKit',description:'Combine JPG, PNG and WebP images into a PDF directly in your browser.'},
  'image-compressor':{title:'Image Compressor — Compress Images Online | ToolsKit',description:'Compress images online in your browser with adjustable quality. Fast, free and private.'},
  'image-resizer':{title:'Image Resizer — Resize Images Online | ToolsKit',description:'Resize images online while preserving aspect ratio. Process images directly in your browser.'},
@@ -58,10 +58,10 @@ function sync(){
  setMeta('meta[property="og:description"]','content',data.description)
  setMeta('meta[property="og:type"]','content',path.startsWith('/tools/')?'article':'website')
  setMeta('meta[property="og:url"]','content',canonical)
- setMeta('meta[property="og:image"]','content',`${base}/og-image.png`)
+ setMeta('meta[property="og:image"]','content',`${base}/og-image.svg`)
  setMeta('meta[name="twitter:title"]','content',data.title)
  setMeta('meta[name="twitter:description"]','content',data.description)
- setMeta('meta[name="twitter:image"]','content',`${base}/og-image.png`)
+ setMeta('meta[name="twitter:image"]','content',`${base}/og-image.svg`)
  let link=document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
  if(!link){link=document.createElement('link');link.rel='canonical';document.head.appendChild(link)}
  link.href=canonical
