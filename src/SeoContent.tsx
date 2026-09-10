@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect,useState} from 'react'
 import {getTool,tools} from './toolRegistry'
 import './seo-content.css'
 
@@ -18,36 +18,33 @@ function related(currentId:string){
 }
 
 export default function SeoContent(){
- const path=window.location.pathname.replace(/\/$/,'')
+ const [path,setPath]=useState(()=>window.location.pathname.replace(/\/$/,'')||'/')
+ useEffect(()=>{const onPop=()=>setPath(window.location.pathname.replace(/\/$/,'')||'/');window.addEventListener('popstate',onPop);return()=>window.removeEventListener('popstate',onPop)},[])
  const slug=path.startsWith('/tools/')?path.slice(7):''
  const tool=getTool(slug)
  const isTool=Boolean(slug&&tool.id===slug)
  const relatedTools=isTool?related(slug):[]
  useEffect(()=>{
   if(!isTool)return
-  const old=document.getElementById('toolkit-seo-jsonld')
-  old?.remove()
+  const old=document.getElementById('toolkit-seo-jsonld');old?.remove()
   const faq=[
    {q:`What is ${tool.name}?`,a:tool.description},
    {q:`Is ${tool.name} free?`,a:'Yes. ToolsKit provides this browser tool for free.'},
    {q:'Are my files or text uploaded?',a:'Core ToolsKit processing is designed to run in your browser, so input can stay on your device.'},
    {q:'How do I use this tool?',a:`Open ${tool.name}, enter or select your input, choose any available options, then run the tool and copy or download the result.`}
   ]
-  const json={
-   '@context':'https://schema.org',
-   '@graph':[
-    {'@type':'WebApplication','@id':`${location.origin}${path}#app`,name:tool.name,description:tool.description,url:`${location.origin}${path}`,applicationCategory:'UtilitiesApplication',operatingSystem:'Any',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'}},
-    {'@type':'BreadcrumbList',itemListElement:[
-     {'@type':'ListItem',position:1,name:'ToolsKit',item:location.origin+'/'},
-     {'@type':'ListItem',position:2,name:`${tool.category} Tools`,item:`${location.origin}/tools`},
-     {'@type':'ListItem',position:3,name:tool.name,item:`${location.origin}${path}`}
-    ]},
-    {'@type':'FAQPage',mainEntity:faq.map(x=>({'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}}))}
-   ]
-  }
+  const json={'@context':'https://schema.org','@graph':[
+   {'@type':'WebApplication','@id':`${location.origin}${path}#app`,name:tool.name,description:tool.description,url:`${location.origin}${path}`,applicationCategory:'UtilitiesApplication',operatingSystem:'Any',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'}},
+   {'@type':'BreadcrumbList',itemListElement:[
+    {'@type':'ListItem',position:1,name:'ToolsKit',item:location.origin+'/'},
+    {'@type':'ListItem',position:2,name:`${tool.category} Tools`,item:`${location.origin}/tools`},
+    {'@type':'ListItem',position:3,name:tool.name,item:`${location.origin}${path}`}
+   ]},
+   {'@type':'FAQPage',mainEntity:faq.map(x=>({'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}}))}
+  ]}
   const script=document.createElement('script');script.id='toolkit-seo-jsonld';script.type='application/ld+json';script.textContent=JSON.stringify(json);document.head.appendChild(script)
   return()=>script.remove()
- },[isTool,path,slug,tool])
+ },[isTool,path,tool])
  if(!isTool)return null
  return <section className="seo-content" aria-label={`${tool.name} information`}>
   <div className="seo-content-inner">
