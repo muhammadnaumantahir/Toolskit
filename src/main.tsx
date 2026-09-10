@@ -4,6 +4,7 @@ import App from './App'
 import SitePage from './SitePage'
 import SiteChrome from './SiteChrome'
 import ToolsLanding from './ToolsLanding'
+import SeoContent from './SeoContent'
 import {getSitePage} from './siteNavigation'
 import './premium.css'
 import './sitePages.css'
@@ -30,5 +31,6 @@ const isHome=path==='/'
 const isTool=path.startsWith('/tools/')
 const infoPage=getSitePage(path)
 const page=path==='/tools'?<ToolsLanding/>:infoPage?<SitePage page={infoPage}/>:<App/>
+const content=isTool?<><SeoContent/>{page}</>:page
 const root=ReactDOM.createRoot(document.getElementById('root')!)
-root.render(<React.StrictMode>{isHome||isTool?page:<SiteChrome>{page}</SiteChrome>}</React.StrictMode>)
+root.render(<React.StrictMode>{isHome||isTool?content:<SiteChrome>{content}</SiteChrome>}</React.StrictMode>)
