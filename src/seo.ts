@@ -2,9 +2,10 @@ const base='https://toolskit.sbs'
 
 export const normalizePath=(value:string)=>value.replace(/\/$/,'')||'/'
 
-export const canonicalUrl=(path=window.location.pathname)=>`${base}${normalizePath(path)}`
+export const canonicalUrl=(path=typeof window==='undefined'?'/':window.location.pathname)=>`${base}${normalizePath(path)}`
 
 function sync(){
+ if(typeof document==='undefined')return
  const canonical=canonicalUrl()
  let link=document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
  if(!link){link=document.createElement('link');link.rel='canonical';document.head.appendChild(link)}
@@ -14,18 +15,11 @@ function sync(){
  og.content=canonical
 }
 
-sync()
-
-const originalPushState=history.pushState.bind(history)
-history.pushState=(...args)=>{
- originalPushState(...args)
- window.dispatchEvent(new PopStateEvent('popstate'))
+if(typeof window!=='undefined'){
+ sync()
+ const originalPushState=history.pushState.bind(history)
+ history.pushState=(...args)=>{originalPushState(...args);window.dispatchEvent(new PopStateEvent('popstate'))}
+ const originalReplaceState=history.replaceState.bind(history)
+ history.replaceState=(...args)=>{originalReplaceState(...args);window.dispatchEvent(new PopStateEvent('popstate'))}
+ window.addEventListener('popstate',sync)
 }
-
-const originalReplaceState=history.replaceState.bind(history)
-history.replaceState=(...args)=>{
- originalReplaceState(...args)
- window.dispatchEvent(new PopStateEvent('popstate'))
-}
-
-window.addEventListener('popstate',sync)
