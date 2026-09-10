@@ -1,5 +1,6 @@
 import {describe,expect,it} from 'vitest'
 import {tools} from '../toolRegistry'
+import {validatePageNumbers,pdfImageStrategy} from '../pdfTools'
 
 const base='https://toolskit.sbs'
 const infoRoutes=['/','/tools','/about','/contact','/privacy-policy','/terms-and-conditions']
@@ -32,5 +33,21 @@ describe('SEO route coverage',()=>{
       'https://toolskit.sbs/tools/word-counter',
       'https://toolskit.sbs/privacy-policy'
     ])
+  })
+})
+
+describe('PDF input validation',()=>{
+  it('rejects missing, out-of-range and duplicate page numbers',()=>{
+    expect(()=>validatePageNumbers([],5,'Select at least one page.')).toThrow('Select at least one page.')
+    expect(()=>validatePageNumbers([0,6],5)).toThrow('Page numbers must be between 1 and 5.')
+    expect(()=>validatePageNumbers([1,1,2],5)).toThrow('Page numbers must be unique.')
+    expect(validatePageNumbers([1,3,5],5)).toEqual([0,2,4])
+  })
+
+  it('accepts supported image types and routes WebP through conversion',()=>{
+    expect(pdfImageStrategy('image/png')).toBe('png')
+    expect(pdfImageStrategy('image/jpeg')).toBe('jpg')
+    expect(pdfImageStrategy('image/webp')).toBe('convert-to-jpg')
+    expect(pdfImageStrategy('image/gif')).toBe('unsupported')
   })
 })
