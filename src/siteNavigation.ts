@@ -1,7 +1,10 @@
 export type SiteNavigationItem={label:string;path:string}
-export const siteNavigation:SiteNavigationItem[]=[
+
+// Primary navigation stays focused on product discovery. Legal pages remain available
+// in the footer and on the individual site pages, keeping the header compact and useful.
+export const primaryNavigation:SiteNavigationItem[]=[
  {label:'Home',path:'/'},
- {label:'Tools / Categories',path:'/tools'},
+ {label:'Tools',path:'/tools'},
  {label:'Developer Tools',path:'/developer-tools'},
  {label:'Text Tools',path:'/text-tools'},
  {label:'PDF Tools',path:'/pdf-tools'},
@@ -10,6 +13,10 @@ export const siteNavigation:SiteNavigationItem[]=[
  {label:'Security Tools',path:'/security-tools'},
  {label:'About Us',path:'/about'},
  {label:'Contact Us',path:'/contact'},
+]
+
+export const siteNavigation:SiteNavigationItem[]=[
+ ...primaryNavigation,
  {label:'Privacy Policy',path:'/privacy-policy'},
  {label:'Terms & Conditions',path:'/terms-and-conditions'},
 ]
