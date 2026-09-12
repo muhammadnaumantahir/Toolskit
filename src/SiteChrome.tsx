@@ -1,5 +1,5 @@
 import {ReactNode,useEffect,useState} from 'react'
-import {siteNavigation} from './siteNavigation'
+import {siteNavigation,primaryNavigation} from './siteNavigation'
 import {Icon,SocialLinks} from './Icons'
 import ChatWidget from './ChatWidget'
 
@@ -18,7 +18,7 @@ export default function SiteChrome({children}:{children:ReactNode}){
    <a className="public-brand" href="/" onClick={closeMenu} aria-label="ToolsKit home"><span className="public-brand-mark"><Icon name="sparkles" size={16}/></span><span>Tools<span>Kit</span></span></a>
    <button className="public-menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="public-primary-nav" aria-label={menuOpen?'Close navigation':'Open navigation'} onClick={()=>setMenuOpen(open=>!open)}><Icon name={menuOpen?'x':'menu'} size={19}/></button>
    <nav id="public-primary-nav" className={`public-primary-nav${menuOpen?' is-open':''}`} aria-label="Primary navigation">
-    {siteNavigation.map(item=><a className={`public-nav-link${isActive(item.path)?' is-active':''}`} href={item.path} key={item.path} aria-current={isActive(item.path)?'page':undefined} onClick={closeMenu}>{item.label}</a>)}
+    {primaryNavigation.map(item=><a className={`public-nav-link${isActive(item.path)?' is-active':''}`} href={item.path} key={item.path} aria-current={isActive(item.path)?'page':undefined} onClick={closeMenu}>{item.label}</a>)}
    </nav>
    <a className="public-contact" href="mailto:rumitech.solutions00@gmail.com">Contact us</a>
   </header>
