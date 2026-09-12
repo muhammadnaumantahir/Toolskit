@@ -1,0 +1,81 @@
+/* Public site chrome: stable desktop navigation + accessible mobile menu. */
+.public-topbar{
+  width:100%;
+  box-sizing:border-box;
+  min-width:0;
+}
+.public-topbar nav.public-primary-nav{
+  min-width:0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  justify-content:flex-start;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.public-topbar nav.public-primary-nav::-webkit-scrollbar{display:none}
+.public-nav-link{
+  flex:0 0 auto;
+  white-space:nowrap;
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+}
+.public-nav-link.is-active{
+  color:#4e45cf!important;
+  background:rgba(109,94,248,.11)!important;
+  box-shadow:inset 0 -2px 0 #6d5ef8;
+}
+.public-nav-link:focus-visible,.public-contact:focus-visible,.public-brand:focus-visible,.public-menu-toggle:focus-visible{
+  outline:3px solid rgba(109,94,248,.25);
+  outline-offset:2px;
+}
+.public-menu-toggle{
+  display:none;
+  flex:0 0 auto;
+  width:40px;
+  height:40px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--card);
+  color:var(--ink);
+}
+.public-menu-toggle:hover{background:#fff}
+@media(min-width:1100px){
+  .public-topbar{gap:14px}
+  .public-topbar nav.public-primary-nav{gap:1px}
+  .public-nav-link{padding:8px 8px;font-size:12.5px}
+  .public-contact{flex:0 0 auto}
+}
+@media(max-width:950px){
+  .public-topbar{gap:10px}
+  .public-topbar nav.public-primary-nav{justify-content:flex-start}
+  .public-nav-link{font-size:13px;padding:8px 8px}
+}
+@media(max-width:700px){
+  .public-topbar{position:sticky;top:0;z-index:300;flex-wrap:wrap}
+  .public-brand{margin-right:auto}
+  .public-menu-toggle{display:inline-flex}
+  .public-contact{display:none}
+  .public-topbar nav.public-primary-nav{
+    display:none;
+    order:10;
+    flex:1 0 100%;
+    width:100%;
+    max-height:calc(100vh - 76px);
+    overflow-y:auto;
+    padding:6px 0 8px;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+    gap:3px;
+  }
+  .public-topbar nav.public-primary-nav.is-open{display:flex}
+  .public-nav-link{flex:1 1 calc(50% - 4px);min-width:145px;justify-content:flex-start;padding:10px 12px}
+}
+@media(max-width:380px){
+  .public-nav-link{flex-basis:100%;min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.public-nav-link{transition:none}}
