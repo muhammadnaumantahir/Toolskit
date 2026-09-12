@@ -17,6 +17,7 @@ import './typography-consistency.css'
 import './spacing-consistency.css'
 import './light-theme.css'
 import './public-chrome-polish.css'
+import './ui-polish.css'
 
 const path=window.location.pathname.replace(/\/$/,'')||'/'
 const syncPageMode=()=>{
