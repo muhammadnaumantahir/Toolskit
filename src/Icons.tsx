@@ -1,4 +1,4 @@
-export type IconName='grid'|'search'|'sparkles'|'arrow'|'mail'|'heart'|'facebook'|'instagram'|'youtube'|'linkedin'|'github'|'x'|'chevron'|'chat'|'send'|'close'
+export type IconName='grid'|'search'|'sparkles'|'arrow'|'mail'|'heart'|'facebook'|'instagram'|'youtube'|'linkedin'|'github'|'x'|'chevron'|'chat'|'send'|'close'|'menu'
 
 export function Icon({name,size=18}:{name:IconName;size?:number}){
  const common={width:size,height:size,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:1.9,strokeLinecap:'round' as const,strokeLinejoin:'round' as const,ariaHidden:true}
@@ -18,6 +18,7 @@ export function Icon({name,size=18}:{name:IconName;size?:number}){
   case'chat':return <svg {...common}><path d="M4 5h16v11H9l-5 4v-4H4Z"/><path d="M8 9h8M8 12.5h5"/></svg>
   case'send':return <svg {...common}><path d="M21 3 3 10.5l7 2.5 2 7L21 3Z"/><path d="M10 13 21 3"/></svg>
   case'close':return <svg {...common}><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg>
+  case'menu':return <svg {...common}><path d="M4 7h16M4 12h16M4 17h16"/></svg>
   default:return <svg {...common}><path d="m8 10 4 4 4-4"/></svg>
  }
 }
